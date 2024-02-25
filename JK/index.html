@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Banned Books</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="" />
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Banned Books</h1>
+        <p>Use the interactive map below to explore banned books in the US</p>
+      </div>
+  
+  <!-- Add images of the book covers -->
+  <div class="image-container">
+    <img src="images/This Book is Gay_cover.jpg" alt="Book 1">
+    <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="Book 2">
+    <img src="images/The Bluest Eye_cover.jpg" alt="Book 3">
+    <img src="images/Out of Darkness_cover.jpg" alt="Book 4">
+    <img src="images/Me and Earl and the Dying Girl_cover.jpg" alt="Book 5">
+    <img src="images/Looking For Alaska_cover.jpg" alt="Book 6">
+    <img src="images/Lawn Boy_cover.jpg" alt="Book 7">
+    <hr>
+    <img src="images/.jpg" alt="Book 8">
+    <img src="images/Flamer_cover.jpg" alt="Book 9">
+    <img src="images/Crank_cover.jpg" alt="Book 10">
+    <img src="images/All Boys Aren't Blue_cover.jpg" alt="Book 11">
+    <img src="images/A Court of Mist and Fury_cover.jpg" alt="Book 12">
+    <img src="images/Gender Queer" alt="Book 13">
+  </div>
+
+  <!-- The div that holds our map -->
+  <div id="map" style="width: 750px; height: 450px;"></div>
+
+  <!-- Dropdown menu -->
+  <select id="selDataset1">
+    <!-- Options will be added dynamically using D3 -->
+  </select>
+   <!-- Dropdown menu -->
+   <select id="selDataset2">
+    <!-- Options will be added dynamically using D3 -->
+  </select>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+
+</body>
+
+</html>
