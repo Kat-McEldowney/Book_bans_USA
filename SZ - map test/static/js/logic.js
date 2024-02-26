@@ -11744,7 +11744,81 @@ let stateGeoJSON = {
     ]
   };
 
-
+let booksData = {};
+booksData = {
+  "Gender Queer: A Memoir": {
+      "title": "Gender Queer",
+      "author": "Maia Kobabe",
+      "publisher": "Turtleback",
+      "publish_date": 2019
+  },
+  "All Boys Aren't Blue": {
+      "title": "All Boys Aren't Blue",
+      "author": "George M. Johnson",
+      "publisher": "Farrar, Straus & Giroux",
+      "publish_date": 2020
+  },
+  "The Bluest Eye": {
+      "title": "The Bluest Eye",
+      "author": "Toni Morrison",
+      "publisher": "Debolsillo",
+      "publish_date": 1970
+  },
+  "Flamer": {
+      "title": "Flamer",
+      "author": "Mike Curato",
+      "publisher": "Henry Holt and Co. (BYR)",
+      "publish_date": 2020
+  },
+  "Looking For Alaska": {
+      "title": "Looking for Alaska",
+      "author": "John Green",
+      "publisher": "Large Print Press",
+      "publish_date": 2005
+  },
+  "The Perks of Being a Wallflower": {
+      "title": "The Perks of Being a Wallflower",
+      "author": "Stephen Chbosky",
+      "publisher": "Editura Trei",
+      "publish_date": 1999
+  },
+  "Lawn Boy": {
+      "title": "Lawn Boy",
+      "author": "Gary Paulsen",
+      "publisher": "Random House Publishing Group",
+      "publish_date": 1993
+  },
+  "Out of Darkness": {
+      "title": "Out of darkness",
+      "author": "Ashley Hope P\u00e9rez",
+      "publisher": "Holiday House, Incorporated",
+      "publish_date": 2015
+  },
+  "A Court of Mist and Fury": {
+      "title": "A Court of Mist and Fury",
+      "author": "Sarah J. Maas",
+      "publisher": "Bloomsbury USA Childrens",
+      "publish_date": 2014
+  },
+  "Crank": {
+      "title": "Crank",
+      "author": "Ellen Hopkins",
+      "publisher": "Simon & Schuster, Limited",
+      "publish_date": 2001
+  },
+  "Me and Earl and the Dying Girl": {
+      "title": "Me and Earl and the Dying Girl",
+      "author": "Jesse Andrews",
+      "publisher": "Imprint unknown",
+      "publish_date": 2012
+  },
+  "This Book is Gay": {
+      "title": "This book is gay",
+      "author": "Dawson, James (Young adult fiction writer)",
+      "publisher": "Hot Key Books",
+      "publish_date": 2014
+  }
+};
 
   let stateBorders = L.geoJson(stateGeoJSON, {
     style: function(feature) {
@@ -11834,5 +11908,31 @@ function getCoordinates(state) {
 
 // Function to handle book click event
 function handleBookClick(bookNumber) {
-    
+    // Retrieve the book title based on the provided index
+    var bookTitles = Object.keys(booksData);
+    var bookTitle = bookTitles[bookNumber - 1];
+    console.log("Book " + bookNumber + " clicked!");
+    // Check if the book title exists
+    if (bookTitle) {
+      // Retrieve the book information using the book title
+      var bookInfo = booksData[bookTitle];
+      console.log("Book info retrieved:", bookInfo);
+      // Call the function to display book information
+      bookInfoBox(bookInfo);
+  } else {
+      console.error("Book info not found for index:", bookNumber);
+  }
 }
+
+function bookInfoBox(bookInfo) {
+  // Clear previous content of the metadata panel
+  d3.select("#book-bookinfo").html("");
+
+  // Use Object.entries to get key/value pairs of the metadata object
+  Object.keys(bookInfo).forEach(key => {
+    // Get the value corresponding to the current key
+    var value = bookInfo[key];
+    // Append an h5 element to the element with the ID 'book-bookinfo' and set its text content to the current key-value pair
+    d3.select("#book-bookinfo").append("h5").text(key + ": " + value);
+  });
+};

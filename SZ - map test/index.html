@@ -36,20 +36,19 @@
     
       <!-- Add images of the book covers -->
     <div class="image-container">
-      <img src="images/This Book is Gay_cover.jpg" alt="Book 1" onclick="handleBookClick(1)">
-      <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="Book 2">
-      <img src="images/The Bluest Eye_cover.jpg" alt="Book 3">
-      <img src="images/Out of Darkness_cover.jpg" alt="Book 4">
-      <img src="images/Me and Earl and the Dying Girl_cover.jpg" alt="Book 5">
-      <img src="images/Looking For Alaska_cover.jpg" alt="Book 6">
-      <img src="images/Lawn Boy_cover.jpg" alt="Book 7">
-      <hr>
-      <img src="images/The Absolutely True Diary of a Part Time Indian.png" alt="Book 8">
-      <img src="images/Flamer_cover.jpg" alt="Book 9">
-      <img src="images/Crank_cover.jpg" alt="Book 10">
-      <img src="images/All Boys Aren't Blue_cover.jpg" alt="Book 11">
-      <img src="images/A Court of Mist and Fury_cover.jpg" alt="Book 12">
-      <img src="images/Gender Queer.png" alt="Book 13">
+      <img src="images/Gender Queer.png" alt="Gender Queer" onclick="handleBookClick(1)">
+      <img src="images/All Boys Aren't Blue_cover.jpg" alt="All Boys Aren't Blue" onclick="handleBookClick(2)">
+      <img src="images/The Bluest Eye_cover.jpg" alt="The Bluest Eye" onclick="handleBookClick(3)">
+      <img src="images/Flamer_cover.jpg" alt="Flamer" onclick="handleBookClick(4)">
+      <img src="images/Looking For Alaska_cover.jpg" alt="Looking For Alaska" onclick="handleBookClick(5)">
+      <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="The Perks of Being a Wallflower" onclick="handleBookClick(6)">
+      <img src="images/Lawn Boy_cover.jpg" alt="Lawn Boy" onclick="handleBookClick(7)">
+      <img src="images/The Absolutely True Diary of a Part Time Indian.png" alt="The Absolutely True Diary of a Part Time Indian" onclick="handleBookClick(8)">
+      <img src="images/Out of Darkness_cover.jpg" alt="Out of Darkness" onclick="handleBookClick(9)">
+      <img src="images/A Court of Mist and Fury_cover.jpg" alt="A Court of Mist and Fury" onclick="handleBookClick(10)">
+      <img src="images/Crank_cover.jpg" alt="Crank" onclick="handleBookClick(11)">
+      <img src="images/Me and Earl and the Dying Girl_cover.jpg" alt="Me and Earl and the Dying Girl" onclick="handleBookClick(12)">
+      <img src="images/This Book is Gay_cover.jpg" alt="This Book is Gay" onclick="handleBookClick(13)">
     </div>
 
     <!-- Dropdown menu -->
@@ -64,6 +63,13 @@
   
     <!-- The div that holds our map -->
   <div id="map" style="width: 750px; height: 450px;"></div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Book Info</h3>
+    </div>
+    <div id="book-bookinfo" class="panel-body"></div>
+  </div>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
