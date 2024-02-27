@@ -6,8 +6,17 @@ let streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 // Define an overlay object to hold overlay layers
 let overlayLayers = {};
 
+// Define the bounds for the United States
+let bounds = L.latLngBounds(
+  L.latLng(24.396308, -125.0), // Southwest corner (lower left)
+  L.latLng(49.384358, -66.93457) // Northeast corner (upper right)
+);
+
 // Creating a map object and setting the view to center on the US
-let map = L.map('map').setView([37.0902, -95.7129], 4);
+let map = L.map('map', {
+  maxBounds: bounds, // Set the maximum bounds
+  maxBoundsViscosity: 1.0 // Make the bounds stick to the edges of the map
+}).setView([39.8283, -98.5795], 4);
 
 // Adding the streetmap layer to the map
 streetmap.addTo(map);
@@ -11788,10 +11797,16 @@ booksData = {
       "publisher": "Random House Publishing Group",
       "publish_date": 1993
   },
+  "The Absolutely True Diary of a Part-Time Indian": {
+    "title": "The Absolutely True Diary of a Part-Time Indian",
+    "author": "Sherman Alexie",
+    "publisher": "Little, Brown and Company",
+    "publish_date": 2007
+},
   "Out of Darkness": {
       "title": "Out of darkness",
-      "author": "Ashley Hope P\u00e9rez",
-      "publisher": "Holiday House, Incorporated",
+      "author": "Ashley Hope Perez P\u00e9rez",
+      "publisher": "Carolrhoda Lab",
       "publish_date": 2015
   },
   "A Court of Mist and Fury": {
@@ -11910,6 +11925,7 @@ function getCoordinates(state) {
 function handleBookClick(bookNumber) {
     // Retrieve the book title based on the provided index
     var bookTitles = Object.keys(booksData);
+    
     var bookTitle = bookTitles[bookNumber - 1];
     console.log("Book " + bookNumber + " clicked!");
     // Check if the book title exists
