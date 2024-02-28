@@ -181,8 +181,16 @@ d3.json("pen_13_most_banned.json").then(function(data) {
   bannedBooks = data; // Store all the ban information
 });
 
+// When clicking on a book image (set up in html)
+function onBookImageClick(bookTitle) {
+  handleBookClick(bookTitle);
+}
+
 // Function to handle book click event
 function handleBookClick(bookTitle) {
+  // remove all the markers in one go
+  clearMarkers();
+
   // Find all entries for the selected book
   let bookEntries = bannedBooks.filter(entry => entry.Title === bookTitle);
 
@@ -195,18 +203,32 @@ function handleBookClick(bookTitle) {
   });
 }
 
-// When clicking on a book image (set up in html)
-function onBookImageClick(bookTitle) {
-  handleBookClick(bookTitle);
-}
-
 // Function to add a marker on the map for a given state
 function addMarker(state) {
   // Get coordinates for the given state
   var coordinates = getCoordinates(state);
 
    // Create a marker and bind a popup with state information
-  var marker = L.marker(coordinates)
-      // .bindPopup("State: " + state)
-      .addTo(map); 
+  //  var marker = 
+   L.marker(coordinates).addTo(map); 
+   //bindPopup with info for each marker? 
 }
+
+// Function to clear all markers from the map
+function clearMarkers() {
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
+}
+
+// Add button that says all 13 books or something
+// circles based on count
+
+
+// oneTitle.forEach(function(row) {
+//   var state = row.State;
+//   var banType = row["Type of Ban"];
+//   var coordinates = stateCoord[state];
+//   var amount = row["Count"]
