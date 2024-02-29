@@ -222,13 +222,3 @@ function clearMarkers() {
     }
   });
 }
-
-// Add button that says all 13 books or something
-// circles based on count
-
-
-// oneTitle.forEach(function(row) {
-//   var state = row.State;
-//   var banType = row["Type of Ban"];
-//   var coordinates = stateCoord[state];
-//   var amount = row["Count"]
