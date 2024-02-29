@@ -1,91 +1,21 @@
-// Define the book data
-let booksData = {
-    "Gender Queer: A Memoir": {
-        "title": "Gender Queer",
-        "author": "Maia Kobabe",
-        "publisher": "Turtleback",
-        "publish_date": 2019
-    },
-    "All Boys Aren't Blue": {
-        "title": "All Boys Aren't Blue",
-        "author": "George M. Johnson",
-        "publisher": "Farrar, Straus & Giroux",
-        "publish_date": 2020
-    },
-    "The Bluest Eye": {
-        "title": "The Bluest Eye",
-        "author": "Toni Morrison",
-        "publisher": "Debolsillo",
-        "publish_date": 1970
-    },
-    "Flamer": {
-        "title": "Flamer",
-        "author": "Mike Curato",
-        "publisher": "Henry Holt and Co. (BYR)",
-        "publish_date": 2020
-    },
-    "Looking For Alaska": {
-        "title": "Looking for Alaska",
-        "author": "John Green",
-        "publisher": "Large Print Press",
-        "publish_date": 2005
-    },
-    "The Perks of Being a Wallflower": {
-        "title": "The Perks of Being a Wallflower",
-        "author": "Stephen Chbosky",
-        "publisher": "Editura Trei",
-        "publish_date": 1999
-    },
-    "Lawn Boy": {
-        "title": "Lawn Boy",
-        "author": "Gary Paulsen",
-        "publisher": "Random House Publishing Group",
-        "publish_date": 1993
-    },
-    "The Absolutely True Diary of a Part-Time Indian": {
-      "title": "The Absolutely True Diary of a Part-Time Indian",
-      "author": "Sherman Alexie",
-      "publisher": "Little, Brown and Company",
-      "publish_date": 2007
-    },
-    "Out of Darkness": {
-        "title": "Out of darkness",
-        "author": "Ashley Hope Perez P\u00e9rez",
-        "publisher": "Carolrhoda Lab",
-        "publish_date": 2015
-    },
-    "A Court of Mist and Fury": {
-        "title": "A Court of Mist and Fury",
-        "author": "Sarah J. Maas",
-        "publisher": "Bloomsbury USA Childrens",
-        "publish_date": 2014
-    },
-    "Crank": {
-        "title": "Crank",
-        "author": "Ellen Hopkins",
-        "publisher": "Simon & Schuster, Limited",
-        "publish_date": 2001
-    },
-    "Me and Earl and the Dying Girl": {
-        "title": "Me and Earl and the Dying Girl",
-        "author": "Jesse Andrews",
-        "publisher": "Imprint unknown",
-        "publish_date": 2012
-    },
-    "This Book is Gay": {
-        "title": "This book is gay",
-        "author": "Dawson, James (Young adult fiction writer)",
-        "publisher": "Hot Key Books",
-        "publish_date": 2014
-    }
-  };
+//load data from json:
+
+let bookData = []
+
+d3.json('pen_13_most_banned.json').then(function(data) {
+  bookData= data;
+  addBookImages();
+  console.log("Banned books data loaded:", bookData);
+}).catch(function(error) {
+    console.error("Error loading banned books data:", error);
+});
   
   // Function to create hover effect for each book image
   function addHoverEffect(bookImage, bookData) {
     let hoverBox = document.createElement('div');
     hoverBox.classList.add('hover-box');
     hoverBox.innerHTML = `
-        <p><strong>Title:</strong> ${bookData.title}</p>
+        <p><strong>Title:</strong> ${bookData.Title}</p>
         <p><strong>Author:</strong> ${bookData.author}</p>
         <p><strong>Publisher:</strong> ${bookData.publisher}</p>
         <p><strong>Publish Date:</strong> ${bookData.publish_date}</p>
@@ -110,25 +40,28 @@ let booksData = {
     });
   }
   
-  let bookImages = document.querySelectorAll('.book-image');
-  
-  // Convert NodeList to array
-  bookImages = Array.from(bookImages);
-  
-  // Loop through each book image
-  bookImages.forEach((bookImage, index) => {
-    // Get the book title
-    let bookTitle = bookImage.getAttribute('alt');
-    console.log('Book title:', bookTitle); // Check the value of bookTitle
+  //put grabbing book images into a function to call when loading book data
+  function addBookImages() {
+    let bookImages = document.querySelectorAll('.book-image');
     
-    // Get the book data using the title
-    let bookData = booksData[bookTitle];
-    console.log('Book data:', bookData); // Check the value of bookData
-  
-    // Call the function to add hover effect
-    addHoverEffect(bookImage, bookData);
+    // Convert NodeList to array
+    bookImages = Array.from(bookImages);
+    
+    // Loop through each book image
+    bookImages.forEach((bookImage, index) => {
+      // Get the book title
+      let bookTitle = bookImage.getAttribute('alt');
+      console.log('Book title:', bookTitle); // Check the value of bookTitle
+      
+      // Get the book data using the title
+      let bookData = bookData[bookTitle];
+      console.log('Book data:', bookData); // Check the value of bookData
+    
+      // Call the function to add hover effect
+      addHoverEffect(bookImage, bookData);
      
   });
+}
   
   // Set up map
   // Adding the tile layer
@@ -193,25 +126,33 @@ let booksData = {
   
     // Find all entries for the selected book
     let bookEntries = bannedBooks.filter(entry => entry.Title === bookTitle);
+
+    //declare variable to hold info from all the markers
+    let markerInfo = [];
   
-    // Iterate over each entry and add markers for banned states
+    // Iterate over each entry and add markers for banned states and create pop up info
     bookEntries.forEach(entry => {
         let bannedStates = entry.State.split(", ");
+        let popupContent = '';
         bannedStates.forEach(state => {
-          addMarker(state);
+            popupContent += `State: ${state}<br>`;
+            popupContent += `${entry['Type of Ban']}: ${entry['Count']}}<br>`;
+          addMarker(state, popupContent);
+          markerInfo.push(popupContent);
         });    
     });
+    populateSidebar(markerInfo);
   }
   
   // Function to add a marker on the map for a given state
-  function addMarker(state) {
+  function addMarker(state, popupContent) {
     // Get coordinates for the given state
     var coordinates = getCoordinates(state);
   
      // Create a marker and bind a popup with state information
-    //  var marker = 
-     L.marker(coordinates).addTo(map); 
-     //bindPopup with info for each marker? 
+    var marker = L.marker(coordinates).addTo(map); 
+     //bindPopup with info for each marker
+     marker.bindPopup(popupContent) 
   }
   
   // Function to clear all markers from the map
@@ -234,15 +175,15 @@ function populateSidebar(markerInfo) {
     markerInfo.forEach(function(marker) {
         // create list item for text
         var lineItem = document.createElement('li');
-        //iterate through the text in the marker
-        marker.popupContern.forEach(function(line) {
-            //create paragraph for each line of code
-            var newLine = document.createElement('p');
-            newLine.innerText = line;
-            lineItem.append(newLine);
+        //iterate through text in the marker
+        markerInfo.forEach(function(line) {
+          // create paragrah for each 
+          var newLine = document.createElement('p');
+          newLine.innerHTML = line;
+          lineItem.append(newLine);
+        }); 
+            sidebar.appendChild(lineItem);
         });
-    sidebar.appendChild(lineItem);
-    });
 }
     // sidebar.innerHTML = sidebarText;
 
