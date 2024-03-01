@@ -13,8 +13,15 @@
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin="" />
 
+    <!-- Leaflet.ExtraMarkers CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css">
+
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
 </head>
 
@@ -22,7 +29,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12 jumbotron text-center">
+      <div class="jumbotron text-center" data-aos="fade-up">
         <h1>Banned Books</h1>
         <p>Use the interactive map below to explore banned books in the US</p>
       </div>
@@ -34,22 +41,22 @@
       </a>
     </div>
     
-    <div id="book-images-container" class="image-container">
+    <div id="book-images-container" class="image-container" data-aos="zoom-in">
       <div class="image-container">
         <img src="images/Gender Queer.png" alt="Gender Queer: A Memoir" onclick="onBookImageClick('Gender Queer: A Memoir')" class="book-image">
-    <img src="images/All Boys Aren't Blue_cover.jpg" alt="All Boys Aren't Blue" onclick="onBookImageClick('All Boys Aren\'t Blue')" class="book-image">
-    <img src="images/The Bluest Eye_cover.jpg" alt="The Bluest Eye" onclick="onBookImageClick('The Bluest Eye')" class="book-image">
-    <img src="images/Flamer_cover.jpg" alt="Flamer" onclick="onBookImageClick('Flamer')" class="book-image">
-    <img src="images/Looking For Alaska_cover.jpg" alt="Looking For Alaska" onclick="onBookImageClick('Looking For Alaska')" class="book-image">
-    <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="The Perks of Being a Wallflower" onclick="onBookImageClick('The Perks of Being a Wallflower')" class="book-image">
-    <img src="images/Lawn Boy_cover.jpg" alt="Lawn Boy" onclick="onBookImageClick('Lawn Boy')" class="book-image">
-    <br>
-    <img src="images/The Absolutely True Diary of a Part Time Indian.png" alt="The Absolutely True Diary of a Part-Time Indian" onclick="onBookImageClick('The Absolutely True Diary of a Part-Time Indian')" class="book-image">
-    <img src="images/Out of Darkness_cover.jpg" alt="Out of Darkness" onclick="onBookImageClick('Out of Darkness')" class="book-image">
-    <img src="images/A Court of Mist and Fury_cover.jpg" alt="A Court of Mist and Fury" onclick="onBookImageClick('A Court of Mist and Fury')" class="book-image">
-    <img src="images/Crank_cover.jpg" alt="Crank" onclick="onBookImageClick('Crank')" class="book-image">
-    <img src="images/Me and Earl and the Dying Girl_cover.jpg" alt="Me and Earl and the Dying Girl" onclick="onBookImageClick('Me and Earl and the Dying Girl')" class="book-image">
-    <img src="images/This Book is Gay_cover.jpg" alt="This Book is Gay" onclick="onBookImageClick('This Book is Gay')" class="book-image">
+        <img src="images/All Boys Aren't Blue_cover.jpg" alt="All Boys Aren't Blue" onclick="onBookImageClick('All Boys Aren\'t Blue')" class="book-image">
+        <img src="images/The Bluest Eye_cover.jpg" alt="The Bluest Eye" onclick="onBookImageClick('The Bluest Eye')" class="book-image">
+        <img src="images/Flamer_cover.jpg" alt="Flamer" onclick="onBookImageClick('Flamer')" class="book-image">
+        <img src="images/Looking For Alaska_cover.jpg" alt="Looking For Alaska" onclick="onBookImageClick('Looking For Alaska')" class="book-image">
+        <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="The Perks of Being a Wallflower" onclick="onBookImageClick('The Perks of Being a Wallflower')" class="book-image">
+        <img src="images/Lawn Boy_cover.jpg" alt="Lawn Boy" onclick="onBookImageClick('Lawn Boy')" class="book-image">
+        <br>
+        <img src="images/The Absolutely True Diary of a Part Time Indian.png" alt="The Absolutely True Diary of a Part-Time Indian" onclick="onBookImageClick('The Absolutely True Diary of a Part-Time Indian')" class="book-image">
+        <img src="images/Out of Darkness_cover.jpg" alt="Out of Darkness" onclick="onBookImageClick('Out of Darkness')" class="book-image">
+        <img src="images/A Court of Mist and Fury_cover.jpg" alt="A Court of Mist and Fury" onclick="onBookImageClick('A Court of Mist and Fury')" class="book-image">
+        <img src="images/Crank_cover.jpg" alt="Crank" onclick="onBookImageClick('Crank')" class="book-image">
+        <img src="images/Me and Earl and the Dying Girl_cover.jpg" alt="Me and Earl and the Dying Girl" onclick="onBookImageClick('Me and Earl and the Dying Girl')" class="book-image">
+        <img src="images/This Book is Gay_cover.jpg" alt="This Book is Gay" onclick="onBookImageClick('This Book is Gay')" class="book-image">
       </div>
   </div>
   
@@ -64,9 +71,16 @@
      <!-- <select id="selDataset2"> -->
       <!-- Options will be added dynamically using D3 -->
     <!-- </select> -->
+
+    <!--adding a container div to hold the sidebar-->
+    <div id="containerSide">
+      <div id="sidebar">
+      <h3>Bans by State and Type</h3>
+      <ul id="markerList"></ul>
+  </div>
   
     <!-- The div that holds our map -->
-  <div id="map" style="width: 750px; height: 450px;"></div>
+  <div id="map" style="width: 750px; height: 450px;" data-aos="flip-right"></div>
 
   <!-- <div class="panel panel-primary">
     <div class="panel-heading">
@@ -80,12 +94,25 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
 
+    <!-- Leaflet.ExtraMarkers JS -->
+  <script src="https://unpkg.com/leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js"></script>
+
   <!-- D3 JavaScript -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <!-- Our JavaScript -->
   <script type="text/javascript" src="static/js/logic.js"></script>
   <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+
+  <!-- AOS JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      offset: 200, // Offset (in px) from the original trigger point
+      duration: 1500 // Duration of the animation (in ms)
+    });
+  </script>
 
 </body>
 

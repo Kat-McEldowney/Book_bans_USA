@@ -25,51 +25,24 @@
   margin-bottom: 20px;
 }
 
-#containerSide {
-  position: relative;
-  display: flex; 
-  justify-content: flex-end;
-}
-
 /* Style for the map */
 #map {
     margin: 0 auto;
     display: block;
-    width: 80%; 
+    width: 200%; /* Adjust the width as needed */
     height: 500px;
     margin-bottom: 20px;
-}
-
-/* Style for the sidebar*/
-
-#sidebar {
-  position: absolute;
-  top:0;
-  right: 0;
-  background: white;
-  padding: 10px;
-  width: 200px;
-  height: 500px;
-  max-height: 80vh;
-  overflow-y: auto;
-  z-index: 1000;
-
-}
-/* style of marker list in the sidebar */
-
-#markerList {
-  max-width: 180px;
-  margin: 0 auto;
+    left: 60px;
 }
 
 /* Style for the dropdown menus */
-#selDataset1,
+/* #selDataset1,
 #selDataset2 {
     display: block;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 20px;
-}
+} */
 
 /* Style for the panel */
 .panel {
@@ -86,4 +59,17 @@
 
 .panel-body {
   padding: 15px; /* Add padding */
+}
+
+#markerList {
+  position: absolute;
+  top: 1020px; /* Adjust this value to your preference */
+  right: calc(58% + 250px); /* Adjust this value to your preference */
+  z-index: 1000; /* Ensure it's above the map */
+  background-color: white; /* Set a background color */
+  padding: 10px; /* Add padding for better readability */
+  border: 1px solid #ccc; /* Add a border for styling */
+  max-height: calc(100vh - 20px); /* Limit the maximum height to the viewport height minus some padding */
+  overflow-y: auto; /* Enable vertical scrolling if the content exceeds the max height */
+  left: auto; /* Reset left property */
 }
