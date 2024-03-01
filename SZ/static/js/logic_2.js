@@ -135,15 +135,23 @@ d3.json('pen_13_most_banned.json').then(function(data) {
         let bannedStates = entry.State.split(", ");
         let popupContent = '';
         bannedStates.forEach(state => {
-            popupContent += `State: ${state}<br>`;
-            popupContent += `${entry['Type of Ban']}: ${entry['Count']}<br>`;
+          popupContent += `<strong>${state}</strong><br>`;
+          popupContent += `Banned:<br>`;
+          if (entry['School Ban'] !==0)
+          popupContent += `In Classrooms: ${entry['School Ban']}<br>`;
+          if (entry['Library Ban'] !==0)
+          popupContent += `In Libraries: ${entry['Library Ban']}<br>`;
+          if (entry['Pending Investigation'] !==0)
+          popupContent += `Pending Investigation: ${entry['Pending Investigation']}<br>`;
+          popupContent += `Total: ${entry['Total']}<br>`;
           addMarker(state, popupContent);
           markerInfo.push(popupContent);
         });    
     });
     populateSidebar(markerInfo);
   }
-  
+
+
   // Function to add a marker on the map for a given state
   function addMarker(state, popupContent) {
     // Get coordinates for the given state
