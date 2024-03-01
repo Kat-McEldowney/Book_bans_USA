@@ -54,11 +54,11 @@ d3.json('pen_13_most_banned.json').then(function(data) {
       console.log('Book title:', bookTitle); // Check the value of bookTitle
       
       // Get the book data using the title
-      let bookData = bookData[bookTitle];
-      console.log('Book data:', bookData); // Check the value of bookData
+      let bookDataParsed = bookData[bookTitle];
+      console.log('Book data:', bookDataParsed); // Check the value of bookData
     
       // Call the function to add hover effect
-      addHoverEffect(bookImage, bookData);
+      addHoverEffect(bookImage, bookDataParsed);
      
   });
 }
@@ -136,7 +136,7 @@ d3.json('pen_13_most_banned.json').then(function(data) {
         let popupContent = '';
         bannedStates.forEach(state => {
             popupContent += `State: ${state}<br>`;
-            popupContent += `${entry['Type of Ban']}: ${entry['Count']}}<br>`;
+            popupContent += `${entry['Type of Ban']}: ${entry['Count']}<br>`;
           addMarker(state, popupContent);
           markerInfo.push(popupContent);
         });    
@@ -170,7 +170,7 @@ var sidebar = document.getElementById('markerList');
 // function to populate sidebar with marker info
 function populateSidebar(markerInfo) {
     // clear existing text in sidebar
-    sidebar.innerHTML = '';
+    sidebar.innerHTML = ' ';
     //iterate through the markers
     markerInfo.forEach(function(marker) {
         // create list item for text
@@ -185,20 +185,5 @@ function populateSidebar(markerInfo) {
             sidebar.appendChild(lineItem);
         });
 }
-    // sidebar.innerHTML = sidebarText;
 
-
-// /er information
-// updateSidebar(initialMarkerData);
-
-  
-  // Add button that says all 13 books or something
-  // circles based on count
-  
-  
-  // oneTitle.forEach(function(row) {
-  //   var state = row.State;
-  //   var banType = row["Type of Ban"];
-  //   var coordinates = stateCoord[state];
-  //   var amount = row["Count"]
   
