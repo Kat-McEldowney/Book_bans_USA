@@ -24,8 +24,8 @@ let booksData = {
       "publisher": "Henry Holt and Co. (BYR)",
       "publish_date": 2020
   },
-  "Looking For Alaska": {
-      "title": "Looking For Alaska",
+  "Looking for Alaska": {
+      "title": "Looking for Alaska",
       "author": "John Green",
       "publisher": "Large Print Press",
       "publish_date": 2005
@@ -72,8 +72,8 @@ let booksData = {
       "publisher": "Imprint unknown",
       "publish_date": 2012
   },
-  "This Book is Gay": {
-      "title": "This Book is Gay",
+  "This Book Is Gay": {
+      "title": "This Book Is Gay",
       "author": "Dawson, James (Young adult fiction writer)",
       "publisher": "Hot Key Books",
       "publish_date": 2014
