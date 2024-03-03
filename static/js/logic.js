@@ -363,3 +363,78 @@ function populateSidebar(markerInfo) {
         sidebar.appendChild(lineItem);
       }); 
 }
+
+// load json data and save as variables
+var allBans;
+
+d3.json("all_states_all_titles.json").then(function(data) {
+  allBans = data;
+});
+
+var thirteenBans;
+
+d3.json("all_states_most_banned.json").then(function(data, title) {
+  thirteenBans = data; 
+});
+
+
+// function to populate charts based on what data set is selected
+function createChart(data, title) {
+  let states = data.map(item =>item.State);
+  
+  let trace1 = {
+    x: states,
+    y: data.map(item => item["Library Ban"]),
+    type: 'bar',
+    name: 'Library Ban'
+  };
+
+  let trace2 = {
+    x: states,
+    y: data.map(item => item["School Ban"]),
+    type: 'bar',
+    name: 'School Ban'
+  };
+
+  let trace3 = {
+    x: states,
+    y: data.map(item => item["Pending Investigation"]),
+    type: 'bar',
+    name: 'Banned Pending Investigation'
+  };
+
+  let chartInfo = [trace1, trace2, trace3];
+
+  let layout = {
+    title: title,
+    barmode: 'stack'
+  //   xaxis: {
+  //     tick0 : 0,
+  //     dtick: 0
+  //   }
+  };
+
+  Plotly.newPlot("stackedCharts", chartInfo, layout); 
+
+}
+
+//event listener for chart dropdowns that changes charts based on selection
+
+document.getElementById('chartSelection').addEventListener('change', function() {
+  let selectedChart = this.value;
+  let chartInfo;
+  let title;
+
+  if (selectedChart == "allBans") {
+    chartInfo = allBans;
+    title = "All Bans by State"
+  } else if (selectedChart == 'thirteenBans') {
+    chartInfo = thirteenBans;
+    title = "Most 13 Banned Titles by State"
+  }
+  createChart(chartInfo, title);
+});
+
+// create map outside function as default
+
+createChart(allBans, "All Bans by State");

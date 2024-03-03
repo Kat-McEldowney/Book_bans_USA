@@ -16,6 +16,10 @@
     <!-- Leaflet.ExtraMarkers CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css">
 
+    <!-- Plotly-->
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
@@ -71,18 +75,7 @@
         <img src="images/This Book is Gay_cover.jpg" alt="This Book Is Gay" onclick="onBookImageClick('This Book Is Gay')" class="book-image">
       </div>
   </div>
-  
 
-
-    <!-- Dropdown menu -->
-    <!-- <select id="selDataset1"> -->
-      <!-- Options will be added dynamically using D3 -->
-    <!-- </select> -->
-  
-     <!-- Dropdown menu -->
-     <!-- <select id="selDataset2"> -->
-      <!-- Options will be added dynamically using D3 -->
-    <!-- </select> -->
 
     <!--adding a container div to hold the sidebar and map-->
 <div id="containerSide">
@@ -93,14 +86,23 @@
   <!-- The div that holds our map -->
   <div id="map" style="width: 750px; height: 450px;" data-aos="flip-right"></div>
 </div>
-    
 
-  <!-- <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Book Info</h3>
-    </div>
-    <div id="book-bookinfo" class="panel-body"></div>
-  </div> -->
+    <!-- Dropdown menu -->
+<div closs="dropdown-container">
+  <p>Bans by State</p>
+<select id="chartSelection">
+  <option value="allBans">All Bans by State</option>
+  <option value="thirteenBans">Most 13 Banned by State</option>
+</select> 
+</div>
+
+
+<!-- chart container-->
+<div class="chart-container"> 
+<div id="stackedCharts"></div>
+</div>
+ 
+
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
