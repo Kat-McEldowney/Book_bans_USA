@@ -175,6 +175,9 @@ var legend = L.control({position: 'bottomright'});
             bans = [0, 3, 5, 8, 12],
             colors = ['green', 'yellow', 'orange', '#b36200', 'red'],
             labels = [];
+        
+        // Add title to the legend
+        div.innerHTML += '<div><strong># of Bans</strong></div>';
     
         // Loop through bans intervals and generate legend items
         for (var i = 0; i < bans.length; i++) {
@@ -183,7 +186,7 @@ var legend = L.control({position: 'bottomright'});
     
             // Create a colored square using CSS and include it in the legend item
             div.innerHTML +=
-                '<div style="display:inline-block;width:12px;height:12px;background-color:' + color + ';margin-right:5px;"></div>' +
+                '<div style="display:inline-block;width:13px;height:13px;background-color:' + color + ';margin-right:5px;"></div>' +
                 bans[i] + (bans[i + 1] ? '&ndash;' + bans[i + 1] + '<br>' : '+');
         }
     
@@ -192,7 +195,7 @@ var legend = L.control({position: 'bottomright'});
         div.style.backgroundColor = 'white';
         div.style.border = '1px solid #ccc';
         // Make the legend smaller
-        div.style.fontSize = '6px';
+        div.style.fontSize = '8px';
     
         return div;
     };
