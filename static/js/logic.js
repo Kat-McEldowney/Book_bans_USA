@@ -340,6 +340,13 @@ function populateSidebar(markerInfo) {
     // clear existing text in sidebar
     sidebar.innerHTML = ' ';
 
+    // create title element for the sidebar
+    var title = document.createElement('h3');
+    title.textContent = 'Bans by State and Type';
+
+    // append the title to the sidebar
+    sidebar.appendChild(title);
+
     //iterate through the markers
     markerInfo.forEach(function(marker) {
         // create list item for text
