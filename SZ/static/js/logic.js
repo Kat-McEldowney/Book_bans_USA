@@ -248,8 +248,8 @@ function handleBookClick(bookTitle) {
         popupContent += `In Libraries: ${entry['Library Ban']}<br>`;
         if (entry['Pending Investigation'] !==0)
         popupContent += `Pending Investigation: ${entry['Pending Investigation']}<br>`;
-        popupContent += `Total: ${entry['Total']}<br>`;
-        addMarker(state, entry.Total, getColor(entry.Total), popupContent); // sends state, total bans, and color
+        popupContent += `Total: ${entry['Total Ban']}<br>`;
+        addMarker(state, entry['Total Ban'], getColor(entry['Total Ban']), popupContent); // sends state, total bans, and color
         markerInfo.push(popupContent);
       });    
   });
