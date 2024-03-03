@@ -166,6 +166,42 @@ streetmap.addTo(map);
 
 // ----------------------------------------------------------------------------------------------
 
+// Set up legend
+
+var legend = L.control({position: 'bottomright'});
+    
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'),
+            bans = [0, 3, 5, 8, 12],
+            colors = ['green', 'yellow', 'orange', '#b36200', 'red'],
+            labels = [];
+    
+        // Loop through bans intervals and generate legend items
+        for (var i = 0; i < bans.length; i++) {
+            // Get the color corresponding to the depth
+            var color = colors[i];
+    
+            // Create a colored square using CSS and include it in the legend item
+            div.innerHTML +=
+                '<div style="display:inline-block;width:12px;height:12px;background-color:' + color + ';margin-right:5px;"></div>' +
+                bans[i] + (bans[i + 1] ? '&ndash;' + bans[i + 1] + '<br>' : '+');
+        }
+    
+        // Apply CSS styling to create a box around the legend
+        div.style.padding = '5px';
+        div.style.backgroundColor = 'white';
+        div.style.border = '1px solid #ccc';
+        // Make the legend smaller
+        div.style.fontSize = '6px';
+    
+        return div;
+    };
+    
+    
+    legend.addTo(map);
+
+// ----------------------------------------------------------------------------------------------
+
 // get coordinates for each state
 stateUrl = "https://gist.githubusercontent.com/meiqimichelle/7727723/raw/0109432d22f28fd1a669a3fd113e41c4193dbb5d/USstates_avg_latLong";
 let stateCoordinates;
