@@ -13,7 +13,7 @@ Lately we’ve been hearing about a rise in book bans in schools and libraries a
 
 ### Methods
 
-The goals of this project were to explore the latest trends in book bans across the U.S. and visualize them in an interactive dashboard with book covers as clickable buttons and a map showing the selected title's information.
+The goals of this project were to explore the latest trends in book bans across the U.S. and visualize them in an interactive dashboard with book covers as clickable buttons and a map showing the selected title's information. We also graphed the distribution of book bans by title and state as a bar chart.
 
 #### Data Sources
 
@@ -55,7 +55,7 @@ On top of the dashboard, there are 13 buttons representing most challenged title
 
 Once a book is clicked, it shows which states, how many school districts and what types of bans that selected title is restricted on a map and a side panel below the tiles. The markers on the map represent a total number of districts that banned the selected book in that state. We also colored the markers, from green as the lowest total bans (less than 3) to red as the highest total bans (greater than or equal to 12).
 
-A dropdown menu on the bottom of the webpage lets the user select between two bar graphs showing the distribution of ban types by state for all titles or for the 13 most challenged titles with the choice to have the states arranged by adult literacy rates or 4th grade reading proficiency. A link is provided to show where the literacy statistics came from.
+A dropdown menu on the bottom of the webpage lets the user select between two bar graphs showing the distribution of ban types by state for all titles or for the 13 most challenged titles with the choice to have the states arranged by adult literacy rates or 4th grade reading proficiency. A [link](https://worldpopulationreview.com/state-rankings/us-literacy-rates-by-state) is provided to show where the literacy statistics came from.
 
 ### Limitations and Implications
 
