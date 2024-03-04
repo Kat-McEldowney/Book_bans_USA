@@ -83,7 +83,7 @@ body {
 
 #containerSide {
   display: flex; /* Use flexbox layout */
-  height: 83vh; /* set height to 70% of viewport */
+  height: 83vh; /* set height to % of viewport */
 
   padding-bottom: 20px;
 }
