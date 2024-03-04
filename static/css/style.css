@@ -3,6 +3,12 @@ body {
 }
 
 .jumbotron {
+  /* background-color: white; */
+  background-color: transparent;
+}
+
+/* background color for the second jumbotron */
+.jumbotron:not(.text-center) {
   background-color: white;
 }
 
