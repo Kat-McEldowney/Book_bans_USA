@@ -2,6 +2,10 @@ body {
   background-color: rgb(185, 228, 229);
 }
 
+.jumbotron {
+  background-color: white;
+}
+
 /* Style for the headline */
 .jumbotron h1, .jumbotron h3 {
   margin-top: 10px; /* Add space above the headline */
