@@ -292,9 +292,38 @@ function handleBookClick(bookTitle) {
         markerInfo.push(popupContent);
       });    
   });
-  populateSidebar(markerInfo);
+  var sidebar = document.getElementById('markerList');
 
+// function to populate sidebar with marker info
+// function populateSidebar(markerInfo) {
+    // clear existing text in sidebar
+    sidebar.innerHTML = ' ';
+
+    // create title element for the sidebar
+    var title = document.createElement('h3');
+    title.textContent = bookTitle + ": Bans by State and Type";
+
+    // append the title to the sidebar
+    sidebar.appendChild(title);
+
+    //iterate through the markers
+    markerInfo.forEach(function(marker) {
+        // create list item for text
+        var lineItem = document.createElement('li');
+
+        // create paragrah for each 
+        var newLine = document.createElement('p');
+        newLine.innerHTML = marker;
+
+        // Append the paragraph to the list item
+        lineItem.appendChild(newLine);
+
+        // Append the list item to the sidebar
+        sidebar.appendChild(lineItem);
+      }); 
 }
+
+
 // ----------------------------------------------------------------------------------------------
 
 // Function to add a marker on the map for a given state that a clicked book is banned in
@@ -333,36 +362,36 @@ function clearMarkers() {
 // ----------------------------------------------------------------------------------------------
 
 // create sidebar on page
-var sidebar = document.getElementById('markerList');
+// var sidebar = document.getElementById('markerList');
 
-// function to populate sidebar with marker info
-function populateSidebar(markerInfo) {
-    // clear existing text in sidebar
-    sidebar.innerHTML = ' ';
+// // function to populate sidebar with marker info
+// function populateSidebar(markerInfo) {
+//     // clear existing text in sidebar
+//     sidebar.innerHTML = ' ';
 
-    // create title element for the sidebar
-    var title = document.createElement('h3');
-    title.textContent = 'Bans by State and Type';
+//     // create title element for the sidebar
+//     var title = document.createElement('h3');
+//     title.textContent = '${"bookTitle"} Bans by State and Type';
 
-    // append the title to the sidebar
-    sidebar.appendChild(title);
+//     // append the title to the sidebar
+//     sidebar.appendChild(title);
 
-    //iterate through the markers
-    markerInfo.forEach(function(marker) {
-        // create list item for text
-        var lineItem = document.createElement('li');
+//     //iterate through the markers
+//     markerInfo.forEach(function(marker) {
+//         // create list item for text
+//         var lineItem = document.createElement('li');
 
-        // create paragrah for each 
-        var newLine = document.createElement('p');
-        newLine.innerHTML = marker;
+//         // create paragrah for each 
+//         var newLine = document.createElement('p');
+//         newLine.innerHTML = marker;
 
-        // Append the paragraph to the list item
-        lineItem.appendChild(newLine);
+//         // Append the paragraph to the list item
+//         lineItem.appendChild(newLine);
 
-        // Append the list item to the sidebar
-        sidebar.appendChild(lineItem);
-      }); 
-}
+//         // Append the list item to the sidebar
+//         sidebar.appendChild(lineItem);
+//       }); 
+// }
 
 // load json data and save as variables
 var allBans;

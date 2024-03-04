@@ -35,7 +35,7 @@
     <div class="row">
       <div class="jumbotron text-center" data-aos="fade-up">
         <h1>Banned Books</h1>
-        <h3>An Exploration of Recent Book Bans in the United States</h3>
+        <h3>An Exploration of Recent School Book Bans in the United States</h3>
         <!-- <p>Use the interactive dashboard below to explore banned books in the U.S.</p> -->
         <!-- Adding definitions of a book ban -->
       </div>
@@ -43,8 +43,10 @@
     <div class="row">
       <div class="jumbotron" data-aos="fade-up">
         <h3>Book Challenge vs. Ban</h3>
-        <p>A challenge is an attempt to remove or restrict access to materials or services based on the objections of a person or group.</p>
-        <p>A ban is when a book is entirely removed from a collection in response to a formal or informal challenge.</p>
+        <p>The below graphics were created using the <a href="https://pen.org/banned-book-list-2021-2022/" target="_blank">Pen America Index of School Book Bans</a> covering the period of July 1, 2021 – 
+          December 31, 2022. Pen America differentiates if a book has been banned in a school library or in a classroom 
+          (which includes classroom libraries, curriculum, and optional reading lists). We included the instances where a book was 
+          banned pending investigation because removing the book from circulation during the investigation does make the book in fact banned.</p>
       </div>
     </div>
   </div>
@@ -58,6 +60,7 @@
   
     
     <div id="book-images-container" class="image-container" data-aos="zoom-in">
+      <h3>Click an a book title to see where and how it banned.</h3>
       <div class="image-container">
         <img src="images/Gender Queer, A Memoir_cover.jpg" alt="Gender Queer: A Memoir" onclick="onBookImageClick('Gender Queer: A Memoir')" class="book-image">
         <img src="images/All Boys Aren't Blue_cover.jpg" alt="All Boys Aren't Blue" onclick="onBookImageClick('All Boys Aren\'t Blue')" class="book-image">
@@ -66,7 +69,6 @@
         <img src="images/Looking For Alaska_cover.jpg" alt="Looking for Alaska" onclick="onBookImageClick('Looking for Alaska')" class="book-image">
         <img src="images/The Perks of Being a Wallflower_cover.jpg" alt="The Perks of Being a Wallflower" onclick="onBookImageClick('The Perks of Being a Wallflower')" class="book-image">
         <img src="images/Lawn Boy_cover.jpg" alt="Lawn Boy" onclick="onBookImageClick('Lawn Boy')" class="book-image">
-        <br>
         <img src="images/The Absolutely True Diary of a Part-Time Indian_cover.jpg" alt="The Absolutely True Diary of a Part-Time Indian" onclick="onBookImageClick('The Absolutely True Diary of a Part-Time Indian')" class="book-image">
         <img src="images/Out of Darkness_cover.jpg" alt="Out of Darkness" onclick="onBookImageClick('Out of Darkness')" class="book-image">
         <img src="images/A Court of Mist and Fury_cover.jpg" alt="A Court of Mist and Fury" onclick="onBookImageClick('A Court of Mist and Fury')" class="book-image">
@@ -89,9 +91,9 @@
 
     <!-- Dropdown menu -->
 <div closs="dropdown-container">
-  <p>Bans by State</p>
+  <p>Select below to see bans by state</p>
 <select id="chartSelection">
-  <option value="allBans">All Bans by State</option>
+  <option value="allBans">All titles by state</option>
   <option value="thirteenBans">Most 13 Banned by State</option>
 </select> 
 </div>

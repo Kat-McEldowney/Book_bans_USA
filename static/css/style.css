@@ -1,3 +1,7 @@
+body {
+  background-color: cadetblue;
+}
+
 /* Style for the headline */
 .jumbotron h1, .jumbotron h3 {
   margin-top: 10px; /* Add space above the headline */
@@ -19,7 +23,7 @@
 }
 
 .banner-container img {
-  width: 65%; /* Adjust the width as needed */
+  width: 50%; /* Adjust the width as needed */
   height: auto; /* Maintain aspect ratio */
 }
 
@@ -30,7 +34,7 @@
 }
 
 .image-container img {
-  width: 100px;
+  width: 7%;
   height: auto;
   margin-bottom: 20px;
 }
@@ -69,8 +73,9 @@
 
 #containerSide {
   display: flex; /* Use flexbox layout */
-  height: 70vh; /* set height to 70% of viewport */
-  padding-botton: 20px;
+  height: 83vh; /* set height to 70% of viewport */
+
+  padding-bottom: 20px;
 }
 
 #map {
@@ -92,8 +97,9 @@
 }
 
 .dropdown-container {
+  margin-left: auto;
   margin-top: 20px;
-  padding: 10px;
+  padding: 20px;
   border: 3pn solid black;
   background-color: lightseagreen;
 }
@@ -102,6 +108,8 @@
   width: 100%; 
   height: 350px;
   margin-top: 20px;
+  padding: 20px;
+  margin-bottom: 100px;
 }
 
 #stackedCharts {
