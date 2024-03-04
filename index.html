@@ -42,7 +42,7 @@
     </div>
     <div class="row">
       <div class="jumbotron" data-aos="fade-up">
-        <h3>Book Challenge vs. Ban</h3>
+        <h3 style="text-align: center">Book Challenge vs. Ban</h3>
         <p>The below graphics were created using the <a href="https://pen.org/banned-book-list-2021-2022/" target="_blank">Pen America Index of School Book Bans</a> covering the period of July 1, 2021 – 
           December 31, 2022. Pen America differentiates if a book has been banned in a school library or in a classroom 
           (which includes classroom libraries, curriculum, and optional reading lists). We included the instances where a book was 
@@ -60,7 +60,7 @@
   
     
     <div id="book-images-container" class="image-container" data-aos="zoom-in">
-      <h3>Click an a book title to see where and how it banned.</h3>
+      <h3>Click an a book title to see where and how it was banned.</h3>
       <div class="image-container">
         <img src="images/Gender Queer, A Memoir_cover.jpg" alt="Gender Queer: A Memoir" onclick="onBookImageClick('Gender Queer: A Memoir')" class="book-image">
         <img src="images/All Boys Aren't Blue_cover.jpg" alt="All Boys Aren't Blue" onclick="onBookImageClick('All Boys Aren\'t Blue')" class="book-image">
@@ -90,19 +90,32 @@
 </div>
 
     <!-- Dropdown menu -->
-<div closs="dropdown-container">
-  <p>Select below to see bans by state</p>
+<div class="chartSelector" data-aos="flip-up">   
+<div class="dropdown-container">
+  <div class="centered">
+  <h3>Bans by State and Reading Level</h3>
 <select id="chartSelection">
-  <option value="allBans">All titles by state</option>
-  <option value="thirteenBans">Most 13 Banned by State</option>
-</select> 
+  <option>Make Selection Here</option>
+  <!-- <option value="allBans">All titles by state</option>
+  <option value="thirteenBans">Most 13 Banned by State</option> -->
+  <option value="allBansbypop">All titles, ordered by state literacy rate</option>
+  <option value="thirteenBansbypop">Most banned 13, ordered by state literacy rate</option>
+  <option value="allBansby4th">All titles, ordered by 4th grade reading level</option>
+  <option value="thirteenBansby4th">13 Most Banned, ordered by 4th grade reading level</option>
+  
+</select>
+<p>Literacy data obtained from <a href="https://worldpopulationreview.com/state-rankings/us-literacy-rates-by-state">World Population Review</a></p>
+</div> 
 </div>
 
 
-<!-- chart container-->
-<div class="chart-container"> 
+<!-- chart container -->
+ <div class="chart-container"> 
 <div id="stackedCharts"></div>
 </div>
+</div>
+
+
  
 
 

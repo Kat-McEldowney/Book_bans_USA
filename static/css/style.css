@@ -1,5 +1,5 @@
 body {
-  background-color: cadetblue;
+  background-color: rgb(185, 228, 229);
 }
 
 /* Style for the headline */
@@ -15,11 +15,17 @@ body {
 .row:nth-child(1) .jumbotron,
 .row:nth-child(2) .jumbotron {
   padding: 20px; /* Adjust the padding as needed */
+
+}
+
+.container {
+  border: 5px, black;
 }
 
 /* Style for banner */
 .banner-container {
   text-align: center;
+
 }
 
 .banner-container img {
@@ -96,22 +102,35 @@ body {
   padding: 10px;
 }
 
-.dropdown-container {
-  margin-left: auto;
-  margin-top: 20px;
-  padding: 20px;
-  border: 3pn solid black;
-  background-color: lightseagreen;
+.chartSelector {
+  height: 100vh;;
 }
+.dropdown-container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  padding: 5px;
+  border: 10px;
+  background-color: #909ccf;
+ 
+}
+
 
 .chart-container {
   width: 100%; 
-  height: 350px;
+  height: auto;
   margin-top: 20px;
-  padding: 20px;
-  margin-bottom: 100px;
+  padding: 10px;
+  margin-bottom: 20px;
+  overflow: auto;
+
 }
 
 #stackedCharts {
   width: 100%;
+  height: auto;
 }

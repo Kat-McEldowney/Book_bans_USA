@@ -84,6 +84,12 @@ let booksData = {
 
 // Selects all elements with the class book-image from the HTML and stores them in bookImages
 // https://www.w3schools.com/jsref/met_document_queryselectorall.asp
+
+// let booksData = {};
+// d3.json("book_info.json").then(function(data, title) {
+//   booksData = data;
+// });
+
 let bookImages = document.querySelectorAll('.book-image');
 
 // Convert bookImages to array for looping
@@ -120,6 +126,7 @@ function addHoverEffect(bookImage, bookData) {
   hoverBox.style.display = 'none'; // Hide the hover box initially
   hoverBox.style.position = 'absolute'; // Set position to absolute
   hoverBox.style.backgroundColor = 'white'; // Add a white background color
+
 
   // Append the hover box to the body element
   document.body.appendChild(hoverBox);
@@ -361,49 +368,38 @@ function clearMarkers() {
 
 // ----------------------------------------------------------------------------------------------
 
-// create sidebar on page
-// var sidebar = document.getElementById('markerList');
-
-// // function to populate sidebar with marker info
-// function populateSidebar(markerInfo) {
-//     // clear existing text in sidebar
-//     sidebar.innerHTML = ' ';
-
-//     // create title element for the sidebar
-//     var title = document.createElement('h3');
-//     title.textContent = '${"bookTitle"} Bans by State and Type';
-
-//     // append the title to the sidebar
-//     sidebar.appendChild(title);
-
-//     //iterate through the markers
-//     markerInfo.forEach(function(marker) {
-//         // create list item for text
-//         var lineItem = document.createElement('li');
-
-//         // create paragrah for each 
-//         var newLine = document.createElement('p');
-//         newLine.innerHTML = marker;
-
-//         // Append the paragraph to the list item
-//         lineItem.appendChild(newLine);
-
-//         // Append the list item to the sidebar
-//         sidebar.appendChild(lineItem);
-//       }); 
-// }
 
 // load json data and save as variables
-var allBans;
+// write function to iterate over dict to make this more conscise
 
-d3.json("all_states_all_titles.json").then(function(data) {
+var allBans;
+d3.json("all_titles.json").then(function(data, title) {
   allBans = data;
 });
 
 var thirteenBans;
-
-d3.json("all_states_most_banned.json").then(function(data, title) {
+d3.json("most_banned.json").then(function(data, title) {
   thirteenBans = data; 
+});
+
+var allBansby4th;
+d3.json("all_titles_4thgrade.json").then(function(data, title) {
+  allBansby4th = data; 
+});
+
+var thirteenBansby4th;
+d3.json("most_banned_4thgrade.json").then(function(data, title) {
+  thirteenBansby4th = data; 
+});
+
+var allBansbypop;
+d3.json("all_titles_adultpop.json").then(function(data, title) {
+  allBansbypop = data; 
+});
+
+var thirteenBansbypop;
+d3.json("most_banned_adultpop.json").then(function(data, title) {
+  thirteenBansbypop = data; 
 });
 
 
@@ -422,7 +418,7 @@ function createChart(data, title) {
     x: states,
     y: data.map(item => item["School Ban"]),
     type: 'bar',
-    name: 'School Ban'
+    name: 'Classroom Ban'
   };
 
   let trace3 = {
@@ -437,10 +433,6 @@ function createChart(data, title) {
   let layout = {
     title: title,
     barmode: 'stack'
-  //   xaxis: {
-  //     tick0 : 0,
-  //     dtick: 0
-  //   }
   };
 
   Plotly.newPlot("stackedCharts", chartInfo, layout); 
@@ -454,13 +446,25 @@ document.getElementById('chartSelection').addEventListener('change', function() 
   let chartInfo;
   let title;
 
-  if (selectedChart == "allBans") {
+  if (selectedChart == 'allBans') {
     chartInfo = allBans;
     title = "All Bans by State"
   } else if (selectedChart == 'thirteenBans') {
     chartInfo = thirteenBans;
     title = "Most 13 Banned Titles by State"
-  }
+  } else if (selectedChart == 'allBansby4th') {
+    chartInfo = allBansby4th;
+    title = "Banned Titles by State: Ordered by Percent of 4th Graders Reading Below Basic Level, Highest to Lowest"
+  } else if (selectedChart == 'thirteenBansby4th') {
+    chartInfo = thirteenBansby4th;
+    title = "13 Most Banned Titles by State: Ordered by Percent of 4th Graders Reading Below Basic Level, Highest to Lowest"
+  } else if (selectedChart == 'allBansbypop') {
+    chartInfo = allBansbypop;
+    title = "Banned Titles by State: Ordered by Percent of Population with Low Literacy, Highest to Lowest"
+  } else if (selectedChart == 'thirteenBansbypop') {
+    chartInfo = thirteenBansbypop;
+    title = "Most 13 Banned Titles by State: Ordered by Percent of Population with Low Literacy, Highest to Lowest"
+  };
   createChart(chartInfo, title);
 });
 
