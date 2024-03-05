@@ -5,11 +5,15 @@ body {
 .jumbotron {
   /* background-color: white; */
   background-color: transparent;
+  width: 80%;
+  margin: auto;
 }
 
 /* background color for the second jumbotron */
 .jumbotron:not(.text-center) {
   background-color: white;
+  width: 80%; 
+  margin: 20px auto; /* Center the element horizontally */
 }
 
 /* Style for the headline */
@@ -95,7 +99,7 @@ body {
 }
 
 #map {
-  width: 70%; /* Take up 75% of the container's width */
+  width: calc(75% - 50px); /* Take up 75% of the container's width minus 10 pixels */  
   flex: 3.25; /*have map take up 75% of width of the container*/
   height: 100%;
   padding-right: 20px;
