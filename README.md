@@ -49,7 +49,7 @@ We performed an API call to Open Library to retrieve information of the most cha
 
 #### Data Visualization
 
-An interactive dashboard was programmed in HTML, JavaScript and CSS. The dashboard can be accessed by visiting this deployed webpage: [link].
+An interactive dashboard was programmed in HTML, JavaScript and CSS. The dashboard can be accessed by visiting this deployed webpage: (https://kat-mceldowney.github.io/Book_bans_USA/).
 
 On top of the dashboard, there are 13 buttons representing most challenged titles from the ALA with their respective book images obtained from Open Library. When you hover over a book, basic information including its title, author, publisher and publish date pops up.
 
