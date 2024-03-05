@@ -9,7 +9,7 @@ Date: March 4, 2024
 
 Lately we’ve been hearing about a rise in book bans in schools and libraries across the United States from the [news](https://www.nytimes.com/news-event/bookbans). Research on formal or attempted book bans is limited and has yet explored in depth. We decided to find data on book bans and visualizing them in an informative and interactive map.
 
-<img src="images/webpage_screenshot.png">
+<img src="images/Screenshot 2024-03-04 204257.png">
 
 ### Methods
 
