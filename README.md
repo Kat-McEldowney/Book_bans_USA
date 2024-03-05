@@ -3,6 +3,7 @@ A study of recent book bans in the United States.
 
 #### Project 3: Columbia School of Engineering Data Analytics Bootcamp
 Authors: Jennifer Kim, Kat McEldowney and Scott Zuckerbrow
+
 Date: March 4, 2024
 
 ### Introduction
